@@ -2,6 +2,7 @@ package com.cultivation.javaBasic;
 
 import org.junit.jupiter.api.Test;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
@@ -18,7 +19,7 @@ class StringTest {
         //
         // It is really easy to pass the test. But you have to tell why.
         // <--start
-        final Optional<Boolean> areSame = Optional.empty();
+        final Optional<Boolean> areSame = Optional.of(false);
         // --end-->
 
         assertEquals("The new string", modifiedString);
@@ -35,7 +36,7 @@ class StringTest {
         //
         // It is really easy to pass the test. But you have to tell why.
         // <--start
-        final Optional<Boolean> areSame = Optional.empty();
+        final Optional<Boolean> areSame = Optional.of(false);
         // --end-->
 
         assertEquals("The string with tailing space.", modifiedString);
@@ -53,7 +54,7 @@ class StringTest {
         //
         // It is really easy to pass the test. But you have to tell why.
         // <--start
-        final Optional<Boolean> areSame = Optional.empty();
+        final Optional<Boolean> areSame = Optional.of(false);
         // --end-->
 
         assertEquals("Part one. Part two.", originalString);
@@ -67,7 +68,8 @@ class StringTest {
 
         // TODO: Take part of the original string according to expectation.
         // <--start
-        final String partOfString = null;
+        int indexOfIsGreat = originalString.indexOf("is great");
+        final String partOfString = originalString.substring(indexOfIsGreat);
         // --end-->
 
         final String expectedString = "is great";
@@ -82,7 +84,8 @@ class StringTest {
 
         // TODO: Take part of the original string according to expectation.
         // <--start
-        final String partOfString = null;
+        int indexOfIs = originalString.indexOf("is");
+        final String partOfString = originalString.substring(indexOfIs, indexOfIs+2);
         // --end-->
 
         final String expectedString = "is";
@@ -105,7 +108,7 @@ class StringTest {
 
         // TODO: Extract words in the sentence.
         // <--Start
-        String[] words = null;
+        String[] words = sentence.split(" ");
         // --End-->
 
         assertArrayEquals(new String[] {"This", "is", "Mike"}, words);
@@ -118,7 +121,7 @@ class StringTest {
 
         // TODO: Extract words in the sentence.
         // <--Start
-        String[] words = null;
+        String[] words = sentence.split("/");
         // --End-->
 
         assertArrayEquals(new String[] {"This", "is", "Mike"}, words);
@@ -133,6 +136,14 @@ class StringTest {
         // TODO: Create string using StringBuilder
         // <--Start
         StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < height; i++) {
+            if (i % 2 == 0) {
+                appendArt(builder, width, '-');
+            } else {
+                appendArt(builder, width, ' ');
+            }
+            builder.append('\n');
+        }
         // --End-->
 
         final String expected =
@@ -143,6 +154,16 @@ class StringTest {
         assertEquals(expected, builder.toString());
     }
 
+    private void appendArt(StringBuilder builder, int width, char artCharacter) {
+        for (int i = 0; i < width; i++) {
+            if(i == 0 || i == width-1) {
+                builder.append('|');
+            } else{
+                builder.append(artCharacter);
+            }
+        }
+    }
+
     @SuppressWarnings("unused")
     @Test
     void should_calculate_checksum_of_a_string() {
@@ -151,6 +172,9 @@ class StringTest {
         int sum = 0;
         // TODO: Write some code to calculate the checksum of the string. The checksum is the sum of each string char.
         // <--Start
+        for(char c : text.toCharArray()){
+            sum += c;
+        }
         // --End-->
 
         assertEquals(3655, sum);
@@ -166,7 +190,7 @@ class StringTest {
         // こ - U+3053
         // れ - U+308c
         // <--Start
-        final String actual = null;
+        final String actual = "\u306A\u306B\u3053\u308C";
         // --End-->
 
         assertEquals(expected, actual);
@@ -179,7 +203,11 @@ class StringTest {
 
         // TODO: Modify the following code to create new string from original String
         // <--Start
-        final String reversed = null;
+        StringBuilder reverse = new StringBuilder();
+        for(int i = original.length()-1 ; i>=0; i--){
+            reverse.append(original.charAt(i));
+        }
+        final String reversed = reverse.toString();
         // --End-->
 
         assertEquals("654321", reversed);
@@ -196,8 +224,8 @@ class StringTest {
 
         // TODO: Please change the value of the following 2 lines to pass the test.
         // <--start
-        Optional<Boolean> actualResultOfEqual = Optional.empty();
-        Optional<Boolean> actualResultOfEqualIgnoreCase = Optional.empty();
+        Optional<Boolean> actualResultOfEqual = Optional.of(false);
+        Optional<Boolean> actualResultOfEqualIgnoreCase = Optional.of(true);
         // --end-->
 
         assertEquals(equalResult, actualResultOfEqual);
@@ -213,7 +241,7 @@ class StringTest {
 
         // TODO: please modify the following code to pass the test
         // <--start
-        final String expectedText = null;
+        final String expectedText = "Hello, Harry. Next year, you will be 23.";
         // --end-->
 
         assertEquals(expectedText, text);
