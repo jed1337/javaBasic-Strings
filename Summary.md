@@ -4,10 +4,10 @@
 	* How equality is measured among Strings
 	* Common String functions
 	* Official documents
-		* (Object#equals)[https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html#equals(java.lang.Object)]
-		* (String immutability and String functions)[https://docs.oracle.com/javase/8/docs/api/java/lang/String.html]
-		* (StringBuilder)[https://docs.oracle.com/javase/8/docs/api/java/lang/StringBuilder.html#append-java.lang.CharSequence-]
-		* (Unicode)[https://docs.oracle.com/javase/tutorial/i18n/text/unicode.html]
+		* [Object#equals](https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html#equals(java.lang.Object))
+		* [String immutability and String functions](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)
+		* [StringBuilder](https://docs.oracle.com/javase/8/docs/api/java/lang/StringBuilder.html#append-java.lang.CharSequence-)
+		* [Unicode](https://docs.oracle.com/javase/tutorial/i18n/text/unicode.html)
 
 2. Why the test failed at first?
 	* The correct value wasn't there
